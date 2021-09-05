@@ -1,13 +1,186 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+:root {
+	--todo-item-width: 52rem;
+	--todo-item-height: 6.1rem;
+
+	/* Primary */
+	--Bright-Blue: hsl(220, 98%, 61%);
+	--Check-Background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+	/* Light Theme */
+	--Very-Light-Gray: hsl(0, 0%, 98%);
+	--Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+	--Light-Grayish-Blue: hsl(233, 11%, 84%);
+	--Dark-Grayish-Blue: hsl(236, 9%, 61%);
+	/* --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%); */
+
+	/* Dark Theme */
+	--Very-Dark-Blue: hsl(235, 21%, 11%);
+	--Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+	--Light-Grayish-Blue: hsl(234, 39%, 85%);
+	--Light-Grayish-Blue: hsl(236, 33%, 92%); /* (hover) */
+	--Dark-Grayish-Blue: hsl(234, 11%, 52%);
+	--Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+	/* --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%); */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: "Josefin Sans", sans-serif;
+	background-image: url("./assets/bg-desktop-dark.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 29rem;
+	background-color: hsl(235, 21%, 11%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.App {
+	margin-top: 7rem;
+	width: 90rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.header {
+	margin-bottom: 4rem;
+	width: var(--todo-item-width);
+	height: var(--todo-item-height);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header h2 {
+	color: white;
+	font-size: 4rem;
+	letter-spacing: 1rem;
+}
+
+.add-todo {
+	width: var(--todo-item-width);
+	height: var(--todo-item-height);
+	display: flex;
+	margin-bottom: 2.5rem;
+	/* justify-content: space-around; */
+	align-items: center;
+	background-color: var(--Very-Dark-Desaturated-Blue);
+}
+
+.checkBox {
+	margin-left: 2rem;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 2.7rem;
+	height: 2.7rem;
+	border-radius: 50%;
+	border: rgba(128, 128, 128, 0.255) solid 1px;
+}
+
+.toggled {
+	background: var(--Check-Background);
+	background-clip: content-box;
+}
+
+/* .checkBox:hover {
+	border: var(--Check-Background) solid 2px;
+} */
+
+.add-todo input {
+	margin-left: 2rem;
+	flex: 2 1;
+	background-color: var(--Very-Dark-Desaturated-Blue);
+	padding-left: 0.4rem;
+	outline: none;
+	border: none;
+	height: 2rem;
+	width: 20rem;
+	color: white;
+}
+
+.todo {
+	width: var(--todo-item-width);
+	height: var(--todo-item-height);
+	/* margin-bottom: 0.1rem; */
+	border-bottom: rgba(128, 128, 128, 0.255) solid 1px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: var(--Very-Dark-Desaturated-Blue);
+}
+
+.todo p {
+	color: var(--Very-Light-Grayish-Blue);
+	margin-left: 2rem;
+	font-size: 1.5rem;
+	flex: 2 1;
+}
+
+.todo .delete {
+	cursor: pointer;
+	margin-right: 3rem;
+}
+
+.footer {
+	font-weight: 700;
+	font-size: 1.3rem;
+	color: var(--Very-Dark-Grayish-Blue);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: var(--todo-item-width);
+	height: 4.3rem;
+	background-color: var(--Very-Dark-Desaturated-Blue);
+}
+
+.footer p {
+	cursor: pointer;
+}
+
+/* Todo Items left */
+.footer .one {
+	margin: 0 2rem 0 2rem;
+	flex: 1 1;
+}
+
+.footer div {
+	margin: 0 1rem 0 0rem;
+	/* padding-right: 2rem; */
+	flex: 2 1;
+	display: flex;
+	justify-content: center;
+	/* background-color: violet; */
+	align-items: center;
+}
+
+/* All */
+.footer div p:nth-child(1) {
+	color: var(--Bright-Blue);
+}
+
+.footer div p {
+	flex: 1 1;
+	margin: 1rem;
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+p:last-child {
+	margin: 0 2rem 0 3rem;
+	flex: 1 1;
 }
