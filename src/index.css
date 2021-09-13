@@ -37,13 +37,20 @@ html {
 
 body {
 	font-family: "Josefin Sans", sans-serif;
+	background-image: url("./assets/bg-desktop-light.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 29rem;
+	/* background-color: hsl(235, 21%, 11%); */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.dark-body {
 	background-image: url("./assets/bg-desktop-dark.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 29rem;
 	background-color: hsl(235, 21%, 11%);
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .App {
@@ -70,7 +77,12 @@ body {
 	letter-spacing: 1rem;
 }
 
+.header img {
+	cursor: pointer;
+}
+
 .add-todo {
+	border-radius: 5px;
 	width: var(--todo-item-width);
 	height: var(--todo-item-height);
 	display: flex;
@@ -116,16 +128,25 @@ body {
 .todo {
 	width: var(--todo-item-width);
 	height: var(--todo-item-height);
-	/* margin-bottom: 0.1rem; */
+	border-bottom: rgba(128, 128, 128, 0.255) solid 1px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	/* background-color: var(--Very-Light-Gray); */
+}
+
+/* .dark-todo {
+	width: var(--todo-item-width);
+	height: var(--todo-item-height);
 	border-bottom: rgba(128, 128, 128, 0.255) solid 1px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	background-color: var(--Very-Dark-Desaturated-Blue);
-}
+} */
 
 .todo p {
-	color: var(--Very-Light-Grayish-Blue);
+	color: var(--Very-Dark-Desaturated-Blue);
 	margin-left: 2rem;
 	font-size: 1.5rem;
 	flex: 2 1;

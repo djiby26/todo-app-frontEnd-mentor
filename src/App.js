@@ -40,6 +40,8 @@ function App() {
 	]);
 	const [filterTargetClassName, setFilterTargetClassName] = useState("");
 
+	const [globalTheme, setGlobalTheme] = useState();
+
 	const updateFilter = (targetClassName) => {
 		setFilterTargetClassName(targetClassName);
 	};
@@ -78,19 +80,34 @@ function App() {
 		setTodos(newOrder);
 	};
 
+	const addNewTodo = () => {};
+
+	// const body = document.getElementsByTagName("body");
+	const getTheme = (theme) => {
+		setGlobalTheme(theme);
+		theme
+			? document.body.classList.remove("dark-body")
+			: document.body.classList.add("dark-body");
+	};
+
 	return (
 		<div className="App">
-			<Header />
-			<AddTodo />
+			<Header getTheme={getTheme} />
+			<AddTodo theme={globalTheme} addTodo={addNewTodo} />
 
 			<Todos
+				theme={globalTheme}
 				setNewOrder={setNewOrder}
 				deleteTodo={deleteTodo}
 				setActive={setActive}
 				todos={filterTodos().length === 0 ? todos : filterTodos()}
 			/>
 
-			<Footer filterTodos={updateFilter} numberOfTodos={todos.length} />
+			<Footer
+				theme={globalTheme}
+				filterTodos={updateFilter}
+				numberOfTodos={todos.length}
+			/>
 		</div>
 	);
 }
