@@ -4,22 +4,32 @@ import CheckBox from "./CheckBox";
 import deleteCross from "../assets/icon-cross.svg";
 import { Draggable } from "react-beautiful-dnd";
 
-const Todo = ({ id, text, isActive, setActive, deleteTodo }, index) => {
-	const checkedStyle = {
-		textDecoration: isActive && "line-through",
-		color: isActive && "hsl(233, 14%, 35%)",
-	};
+const Todo = ({ id, text, isActive, setActive, deleteTodo, theme }, index) => {
+	// const checkedStyle = {
+	// 	textDecoration: isActive && "line-through",
+	// 	color: isActive && "hsl(233, 14%, 35%)",
+	// };
 	return (
 		<Draggable key={id} draggableId={id.toString()} index={index}>
 			{(provided) => (
 				<div
+					style={{
+						backgroundColor: theme ? "hsl(0, 0%, 98%)" : "hsl(235, 24%, 19%)",
+					}}
 					ref={provided.innerRef}
 					{...provided.draggableProps}
 					{...provided.dragHandleProps}
 					className="todo">
 					<CheckBox id={id} setActive={setActive} />
-					<p style={checkedStyle}>{text}</p>
+					<p
+						style={{
+							textDecoration: isActive && "line-through",
+							color: isActive && "hsl(233, 14%, 35%)",
+						}}>
+						{text}
+					</p>
 					<img
+						alt=""
 						onClick={() => deleteTodo(id)}
 						className="delete"
 						src={deleteCross}

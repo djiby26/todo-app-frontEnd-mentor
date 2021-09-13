@@ -1,46 +1,50 @@
-import "./App.css";
-import Header from "./components/Header";
-import Todos from "./components/Todos";
-import AddTodo from "./components/AddTodo";
-import { useState } from "react";
-import Footer from "./components/Footer";
+import './App.css';
+import Header from './components/Header';
+import Todos from './components/Todos';
+import AddTodo from './components/AddTodo';
+import { useState } from 'react';
+import Footer from './components/Footer';
+import ThemeContext from './context/ThemeContext';
 
 function App() {
+	const [globalTheme, setGlobalTheme] = useState('light');
+
+	// const ThemeContext =
+
 	const [todos, setTodos] = useState([
 		{
 			id: 0,
-			text: "Complete online JavaScript course",
+			text: 'Complete online JavaScript course',
 			isActive: false,
 		},
 		{
 			id: 1,
-			text: "Jog around the park 3x",
+			text: 'Jog around the park 3x',
 			isActive: false,
 		},
 		{
 			id: 2,
-			text: "10 minutes meditation",
+			text: '10 minutes meditation',
 			isActive: false,
 		},
 		{
 			id: 3,
-			text: "Read for 1 hour",
+			text: 'Read for 1 hour',
 			isActive: false,
 		},
 		{
 			id: 4,
-			text: "Pick up groceries",
+			text: 'Pick up groceries',
 			isActive: false,
 		},
 		{
 			id: 5,
-			text: "Complete Todo App on Frontend Mentor",
+			text: 'Complete Todo App on Frontend Mentor',
 			isActive: false,
 		},
 	]);
-	const [filterTargetClassName, setFilterTargetClassName] = useState("");
 
-	const [globalTheme, setGlobalTheme] = useState();
+	const [filterTargetClassName, setFilterTargetClassName] = useState('');
 
 	const updateFilter = (targetClassName) => {
 		setFilterTargetClassName(targetClassName);
@@ -62,13 +66,13 @@ function App() {
 		let filteredTodos = [];
 
 		switch (filterTargetClassName) {
-			case "all":
+			case 'all':
 				filteredTodos = todos;
 				break;
-			case "active":
+			case 'active':
 				filteredTodos = todos.filter((todo) => todo.isActive === false);
 				break;
-			case "completed":
+			case 'completed':
 				filteredTodos = todos.filter((todo) => todo.isActive === true);
 				break;
 			default:
@@ -80,34 +84,34 @@ function App() {
 		setTodos(newOrder);
 	};
 
-	const addNewTodo = () => {};
+	const addTodo = (check, newTodo) => {
+		console.log(check, newTodo);
+		// setTodos([...todos, newTodo]);
+	};
 
-	// const body = document.getElementsByTagName("body");
 	const getTheme = (theme) => {
 		setGlobalTheme(theme);
-		theme
-			? document.body.classList.remove("dark-body")
-			: document.body.classList.add("dark-body");
+		theme === 'light'
+			? document.body.classList.remove('dark-body')
+			: document.body.classList.add('dark-body');
 	};
 
 	return (
-		<div className="App">
+		<div className='App'>
 			<Header getTheme={getTheme} />
-			<AddTodo theme={globalTheme} addTodo={addNewTodo} />
 
-			<Todos
-				theme={globalTheme}
-				setNewOrder={setNewOrder}
-				deleteTodo={deleteTodo}
-				setActive={setActive}
-				todos={filterTodos().length === 0 ? todos : filterTodos()}
-			/>
+			<ThemeContext.Provider value={globalTheme}>
+				<AddTodo addTodo={addTodo} />
 
-			<Footer
-				theme={globalTheme}
-				filterTodos={updateFilter}
-				numberOfTodos={todos.length}
-			/>
+				<Todos
+					setNewOrder={setNewOrder}
+					deleteTodo={deleteTodo}
+					setActive={setActive}
+					todos={filterTodos().length === 0 ? todos : filterTodos()}
+				/>
+
+				<Footer filterTodos={updateFilter} numberOfTodos={todos.length} />
+			</ThemeContext.Provider>
 		</div>
 	);
 }
