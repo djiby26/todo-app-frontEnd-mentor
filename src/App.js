@@ -83,7 +83,6 @@ function App() {
 				break;
 			default:
 		}
-		console.table(filteredTodos);
 		return filteredTodos;
 	};
 
@@ -93,7 +92,6 @@ function App() {
 
 	const addTodo = (check, newTodo) => {
 		setId(id + 1);
-		console.log(check, newTodo);
 		setTodos([...todos, { id: id, text: newTodo, isInActive: check }]);
 	};
 
