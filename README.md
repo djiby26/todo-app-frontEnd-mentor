@@ -34,8 +34,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshots/screenshot-dark.png)
-![](./screenshots/screenshot-light.png)
+![Screenshot Dark](./src/screenshots/screenshot-dark.png)
+![Screenshot Light](./src/screenshots/screenshot-light.png)
 
 ### Links
 
@@ -69,7 +69,7 @@ Users should be able to:
 - [React Doc](https://reactjs.org)
 - [Beautiful DND](https://github.com/atlassian/react-beautiful-dnd)
 - [Stack OverFlow](https://stackoverflow.com/)
-- [And many others](😜)
+- [And many others😜]('')
 
 ## Author
 
