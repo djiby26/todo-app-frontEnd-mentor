@@ -40,7 +40,6 @@ body {
 	background-image: url('./assets/bg-desktop-light.jpg');
 	background-repeat: no-repeat;
 	background-size: 100% 29rem;
-	/* background-color: hsl(235, 21%, 11%); */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -145,7 +144,7 @@ body {
 } */
 
 .todo p {
-	/* color: var(--Very-Dark-Desaturated-Blue); */
+	color: var(--Very-Dark-Desaturated-Blue);
 	margin-left: 2rem;
 	font-size: 1.5rem;
 	flex: 2 1;
@@ -189,7 +188,7 @@ body {
 }
 
 /* All */
-.footer div p:nth-child(1) {
+.selected {
 	color: var(--Bright-Blue);
 }
 

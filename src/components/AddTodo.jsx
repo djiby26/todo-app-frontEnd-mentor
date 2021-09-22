@@ -4,14 +4,16 @@ import { useContext, useState } from 'react';
 import ThemeContext from '../context/ThemeContext';
 
 const AddTodo = ({ addTodo }) => {
-	const [check, setCheck] = useState();
+	const [check, setCheck] = useState(false);
 	const getCheckState = (checkState) => {
 		setCheck(checkState);
 	};
+
 	const handleSubmit = (e) => {
-		if (e.target.code === 'Enter') {
+		if (e.key === 'Enter') {
 			e.preventDefault();
 			addTodo(check, e.target.value);
+			e.target.value = '';
 		}
 	};
 	const theme = useContext(ThemeContext);
@@ -30,7 +32,7 @@ const AddTodo = ({ addTodo }) => {
 			<AddTodoCheckBox getCheckState={getCheckState} />
 			<form>
 				<input
-					onKeyDown={handleSubmit}
+					onKeyPress={handleSubmit}
 					style={style}
 					placeholder='Create a new todo...'
 					type='text'

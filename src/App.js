@@ -9,38 +9,38 @@ import ThemeContext from './context/ThemeContext';
 function App() {
 	const [globalTheme, setGlobalTheme] = useState('light');
 
-	// const ThemeContext =
+	const [id, setId] = useState(6);
 
 	const [todos, setTodos] = useState([
 		{
 			id: 0,
 			text: 'Complete online JavaScript course',
-			isActive: false,
+			isInActive: false,
 		},
 		{
 			id: 1,
 			text: 'Jog around the park 3x',
-			isActive: false,
+			isInActive: false,
 		},
 		{
 			id: 2,
 			text: '10 minutes meditation',
-			isActive: false,
+			isInActive: false,
 		},
 		{
 			id: 3,
 			text: 'Read for 1 hour',
-			isActive: false,
+			isInActive: false,
 		},
 		{
 			id: 4,
 			text: 'Pick up groceries',
-			isActive: false,
+			isInActive: false,
 		},
 		{
 			id: 5,
 			text: 'Complete Todo App on Frontend Mentor',
-			isActive: false,
+			isInActive: false,
 		},
 	]);
 
@@ -53,7 +53,7 @@ function App() {
 	const setActive = (id) => {
 		setTodos(
 			todos.map((todo) =>
-				todo.id === id ? { ...todo, isActive: !todo.isActive } : todo
+				todo.id === id ? { ...todo, isInActive: !todo.isInActive } : todo
 			)
 		);
 	};
@@ -70,13 +70,20 @@ function App() {
 				filteredTodos = todos;
 				break;
 			case 'active':
-				filteredTodos = todos.filter((todo) => todo.isActive === false);
+				filteredTodos = todos.filter((todo) => todo.isInActive === false);
 				break;
 			case 'completed':
-				filteredTodos = todos.filter((todo) => todo.isActive === true);
+				filteredTodos = todos.filter((todo) => todo.isInActive === true);
+				break;
+			case 'clear-completed':
+				setTodos((prevTodos) =>
+					prevTodos.filter((todo) => todo.isInActive === false)
+				);
+				// filteredTodos = todos.filter((todo) => todo.isInActive === false);
 				break;
 			default:
 		}
+		console.table(filteredTodos);
 		return filteredTodos;
 	};
 
@@ -85,8 +92,9 @@ function App() {
 	};
 
 	const addTodo = (check, newTodo) => {
+		setId(id + 1);
 		console.log(check, newTodo);
-		// setTodos([...todos, newTodo]);
+		setTodos([...todos, { id: id, text: newTodo, isInActive: check }]);
 	};
 
 	const getTheme = (theme) => {
